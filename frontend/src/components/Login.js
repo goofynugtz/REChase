@@ -5,13 +5,8 @@ import GoogleAuth from '../services/googleAuth';
 
 export default function Login({auth, setAuth, name, setName}) {
 
-  console.log("auth from App in Login: ", auth);
-  console.log("name from App in login: ", name);
-
   const loginResponse = async (res) => {
-    console.log("Response from Google: ", res);
     let responseCode = await GoogleAuth(res.accessToken)
-    console.log(responseCode);
 
     if (responseCode === 200) {
       setAuth(true);

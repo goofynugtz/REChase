@@ -1,7 +1,5 @@
 export const Map = ({ darkMode }) => {
 
-  console.log("dm in Map: ", darkMode.value);
-
   return (
     <>
       {darkMode.value ?
