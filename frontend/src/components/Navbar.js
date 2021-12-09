@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiSun, FiMoon } from 'react-icons/fi';
 
 
-export default function Navbar ({darkMode, auth, setAuth, name}) {
+export default function Navbar ({darkMode, auth, setAuth, name, picture }) {
 
   return (
     <div>
@@ -28,7 +28,7 @@ export default function Navbar ({darkMode, auth, setAuth, name}) {
               <div className='navlink profile' onClick={() => {
                 setAuth(false)
                 alert("You've been signed out");}}>
-                  <div className='profile-image'></div>
+                  <img src={picture} className="profile-image" alt="profile"/>
                   <div>{name}</div>
               </div>
               <div className='navlink'>

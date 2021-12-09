@@ -137,10 +137,10 @@ svg {
   align-items: center;
 }
 
-.navlink .profile-image {
-  width: 2.5rem;
-  height: 2.5rem;
-  background-color: #5EFFC7;
+.profile-image {
+  width: 5rem;
+  height: 5rem;
+  /* background-color: #5EFFC7; */
   border-radius: 10rem;
   padding: 1rem;
   margin: 1rem;

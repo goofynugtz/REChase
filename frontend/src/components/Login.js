@@ -1,17 +1,34 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import GoogleAuth from '../services/googleAuth';
 
 
-export default function Login({auth, setAuth, name, setName}) {
+export default function Login({
+  auth,
+  setAuth,
+  name,
+  setName,
+  email,
+  setEmail,
+  picture,
+  setPicture
+}) {
 
   const loginResponse = async (res) => {
+    console.log("res profile from google: ", res.profileObj.name);
+
     let responseCode = await GoogleAuth(res.accessToken)
 
     if (responseCode === 200) {
+      setName(res.profileObj.name);
+      setEmail(res.profileObj.email);
+      setPicture(res.profileObj.imageUrl)
       setAuth(true);
-      setName(res.profileObj.givenName);
+
     } else {
+      setName('');
+      setEmail('');
+      setPicture('')
       setAuth(false);
     }
   }
@@ -20,15 +37,6 @@ export default function Login({auth, setAuth, name, setName}) {
     setAuth(false);
     alert("You've been signed out");
   }
-
-
-  useEffect(() => {
-    const authentication = {
-      "auth": auth,
-      "name": name
-    }
-    window.sessionStorage.setItem("authentication", authentication);
-  }, [auth, name]);
 
 
   let clientId = "609471501475-p162n1d9un54os08n6mqtv3n7c8amu0a.apps.googleusercontent.com"

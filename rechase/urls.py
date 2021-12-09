@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import GoogleLogin
+from api.views import GoogleLogin
+from api.views import leaderboard, updateLeaderboardOnLogin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     # path('accounts/', include('rest_auth.urls')),
     # path('accounts/registration/', include('rest_auth.registration.urls')),
-    path('accounts/google/', GoogleLogin.as_view(), name='google_login')
+    path('accounts/google/', GoogleLogin.as_view(), name='google_login'),
+    path('leaderboard/', leaderboard.as_view(), name='leaderboard'),
+    path('dashboard/', updateLeaderboardOnLogin, name='addEntry'),
+    # path('hunt/', )
 ]
