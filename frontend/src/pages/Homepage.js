@@ -4,11 +4,8 @@ import Login from "../components/Login";
 export default function Homepage({
   auth,
   setAuth,
-  name,
   setName,
-  email,
   setEmail,
-  picture,
   setPicture
 }) {
 
@@ -24,10 +21,9 @@ export default function Homepage({
         <Login
           auth={auth}
           {...{ setAuth }}
-          {...{ name }}
           {...{ setName }}
-          {...{ email, setEmail }}
-          {...{ picture, setPicture }}
+          {...{ setEmail }}
+          {...{ setPicture }}
         />
       </div>
       <div className="svg-parent themed-stroke">

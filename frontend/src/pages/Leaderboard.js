@@ -10,13 +10,11 @@ export default function Leaderboard() {
     axios
       .get("http://127.0.0.1:8000/leaderboard/")
       .then(res => {
-        console.log(res);
         setStandings(res.data.standings);
       })
       .catch(err => {
         console.err(err);
       })
-      console.log(standings);
   
     //eslint-disable-next-line
   }, [])
@@ -27,7 +25,6 @@ export default function Leaderboard() {
         <div className="heading mg-t">Leaderboard</div>
         <div className="table">
           {standings.map((standing, key) => {
-            console.log(standing)
             return (
               <div className={`table-row ${key}`}>
                 <div className="table-data rank">{standing.rank}</div>

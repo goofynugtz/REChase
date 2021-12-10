@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from api.views import GoogleLogin
-from api.views import leaderboard, updateLeaderboardOnLogin
+from api.views import leaderboard, updateLeaderboardOnLogin, getQuestion, verifyAnswer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,5 +26,6 @@ urlpatterns = [
     path('accounts/google/', GoogleLogin.as_view(), name='google_login'),
     path('leaderboard/', leaderboard.as_view(), name='leaderboard'),
     path('dashboard/', updateLeaderboardOnLogin, name='addEntry'),
-    # path('hunt/', )
+    path('hunt/', getQuestion, name="level"),
+    path('hunt/submit/', verifyAnswer, name="submit")
 ]

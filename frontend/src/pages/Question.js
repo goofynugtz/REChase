@@ -1,35 +1,51 @@
-import { useState } from 'react';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
-export default function Question() {
+export default function Question({ level, setLevel, email }) {
 
-  let req = {
-    "question": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam ducimus explicabo nostrum cupiditate voluptatem consequatur vero libero totam aperiam provident? Ex sequi illo natus harum magnam expedita eaque eum reprehenderit. Tenetur doloremque maiores laborum corrupti omnis similique praesentium excepturi quidem.",
-    "answers": ["Red", "red", "RED"]
-  }
-
+  const [question, setQuestion] = useState('')
   const [answer, setAnswer] = useState('');
 
-  const answerVerifyingHnadler = () => {
-    if (!req.answers.some((e) => {
-      return e === answer;
-    })) {
-      alert("Your answer is incorrect. Please try again.");
+  useEffect(() => {
+
+    axios.post("http://localhost:8000/hunt/", {
+      "id": level
+    }).then(res => {
+      setQuestion(res.data.question);
+    }).catch(err => console.error(err))
+
+  }, [level])
+
+
+  const verifyAnswer = async (level, email, answer) => {
+    axios.post("http://localhost:8000/hunt/submit/", {
+      "id": level,
+      "email": email,
+      "answer": answer
     }
+    ).then(res => {
+      if (res.data.isCorrect) {
+        if (level >= 0 && level < 3)
+          setLevel(level + 1);
+      }
+      else
+        alert("Your answer is incorrect. Please try again.");
+
+    }).catch((err) => console.error(err))
   }
 
   const submitHandler = (e) => {
     e.preventDefault();
-    answerVerifyingHnadler();
-    // Update to server.
+    verifyAnswer(level, email, answer);
   }
 
 
   return (
     <div className="home">
       <div className="main">
-        <div className="heading question-label">Level <span className="accent">0</span></div>
+        <div className="heading question-label">Level <span className="accent">{level}</span></div>
         <div className="question">
-          {req.question}
+          {question}
         </div>
         <form className="form-group" onSubmit={submitHandler}>
           <input className="question-input" type="text" onChange={(e) => setAnswer(e.target.value)} />

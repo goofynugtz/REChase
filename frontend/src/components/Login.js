@@ -6,20 +6,20 @@ import GoogleAuth from '../services/googleAuth';
 export default function Login({
   auth,
   setAuth,
-  name,
   setName,
-  email,
   setEmail,
-  picture,
   setPicture
 }) {
 
-  const loginResponse = async (res) => {
-    console.log("res profile from google: ", res.profileObj.name);
+  const successLogin = async (res) => {
 
     let responseCode = await GoogleAuth(res.accessToken)
 
     if (responseCode === 200) {
+      localStorage.setItem("auth", 1)
+      localStorage.setItem("name", res.profileObj.name)
+      localStorage.setItem("email", res.profileObj.email)
+      localStorage.setItem("picture", res.profileObj.imageUrl)
       setName(res.profileObj.name);
       setEmail(res.profileObj.email);
       setPicture(res.profileObj.imageUrl)
@@ -30,14 +30,17 @@ export default function Login({
       setEmail('');
       setPicture('')
       setAuth(false);
+      localStorage.clear();
     }
   }
 
-  const logoutResponse = () => {
+  const failedLogin = async res => console.error(res)
+
+  const successLogout = () => {
     setAuth(false);
+    localStorage.clear();
     alert("You've been signed out");
   }
-
 
   let clientId = "609471501475-p162n1d9un54os08n6mqtv3n7c8amu0a.apps.googleusercontent.com"
 
@@ -50,8 +53,8 @@ export default function Login({
             render={renderProps => (
               <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Sign Up / Login</button>
             )}
-            onSuccess={loginResponse}
-            onFailure={loginResponse}
+            onSuccess={successLogin}
+            onFailure={failedLogin}
           />
           :
           <GoogleLogout
@@ -59,7 +62,7 @@ export default function Login({
             render={renderProps => (
               <button onClick={renderProps.onClick} disabled={renderProps.disabled}>Log Out</button>
             )}
-            onLogoutSuccess={logoutResponse}
+            onLogoutSuccess={successLogout}
           />
       }
     </div>

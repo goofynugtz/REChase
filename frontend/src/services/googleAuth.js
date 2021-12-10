@@ -6,7 +6,7 @@ const GoogleAuth = async (accesstoken) => {
     {
       access_token: accesstoken,
     }
-  );
+  ).catch(err => console.error(err));
   return res.status;
 };
 

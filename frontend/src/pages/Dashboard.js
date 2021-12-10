@@ -1,35 +1,37 @@
 import { Map } from "../components/assets/Map";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-export default function Dashboard({ name, email, picture, darkMode }) {
-
-  const [level, setLevel] = useState(0);
+export default function Dashboard({ 
+  name, 
+  email, 
+  picture,
+  level,
+  setLevel, 
+  darkMode }) {
 
   useEffect(() => {
-      console.log(name)
-      console.log(email)
-      console.log(picture)
-  
       axios.post("http://localhost:8000/dashboard/", {
         "name": name,
         "email": email,
         "picture": picture
       }).then(res => {
-        console.log(res)
-        if (res.status === 400){
+        
+        setLevel(res.data.profile[0].level)
+
+        if (res.status === 400)
           console.error("BAD REQUEST: ", res);
-        }
-        if (res.status === 302){
+        
+        if (res.status === 302)
           console.log("Welcome Back!");
-        }
+        
       }).catch(error => {
         console.error(error)
       })
     
       //eslint-disable-next-line
-  }, [])
+  }, [level])
 
   return (
     <section className="home">
