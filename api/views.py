@@ -61,7 +61,7 @@ def verifyAnswer(request):
 
     if answer[0].lower() == request.data["answer"].lower():
       profile = Leaderboard.objects.get(email=request.data["email"])
-      if profile.level <= 3:
+      if profile.level <= 3 and profile.score < Question.objects.all().count() * 10:
         profile.score += 10
       if profile.level < 3:
         profile.level += 1

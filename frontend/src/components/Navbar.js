@@ -6,7 +6,7 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 export default function Navbar({ darkMode, auth, setAuth, name, picture }) {
 
   return (
-    <div>
+    <>
       {auth ?
         <div className='nav'>
           <div className='left'>
@@ -60,7 +60,7 @@ export default function Navbar({ darkMode, auth, setAuth, name, picture }) {
           </div>
         </div>
       }
-    </div>
+    </>
   )
 }
 

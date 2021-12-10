@@ -36,7 +36,8 @@ html {
 body {
 	transition: all 1s;
 	margin: 0 auto;
-  max-width: 120rem;
+  padding: 0 5rem;
+  max-width: 125rem;
 	font-family: 'SFCompactMedium';
 	background-color: var(--background-color);
   font-size: 1.8rem;
@@ -75,9 +76,15 @@ hr {
 
 .path1 {
   position: absolute;
-  left: 7.5vw;
-  width: 7.5vw;
+  left: 10rem;
+  width: 10rem;
   z-index: -1;
+}
+
+@media screen and (max-width: 1576px) {
+  .path1 {
+    display: none;
+  }
 }
 
 .island {
@@ -101,7 +108,7 @@ svg {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 7vh;
+  height: 10rem;
 }
 
 .nav .left {
@@ -129,6 +136,7 @@ svg {
 
 .nav .navlink {
   margin: 2rem;
+  width: max-content;
 }
 
 .profile {
@@ -160,11 +168,13 @@ svg {
 }
 
 
+
 .home .main {
   width: 60%;
   display: flex;
   flex-direction: column;
 }
+
 
 .center {
   justify-content: center;
@@ -212,7 +222,32 @@ svg {
 .home .svg-parent {
   display: flex;
   width: 30rem;
-  /* margin: auto; */
+}
+
+@media screen and (max-width: 1000px) {
+  .home {
+    display: flex;
+    flex-direction: column-reverse;
+    /* justify-content: space-evenly; */
+    height: max-content;
+  }
+
+  .home .main {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+  }
+
+  .center {
+    justify-content: center;
+  }
+
+  .home .svg-parent {
+    display: flex;
+    width: 10rem;
+  }
 }
 
 .themed-stroke {
@@ -243,6 +278,7 @@ svg {
 .table::-webkit-scrollbar-thumb {
   display: none;
 }
+
 
 .table-row {
   display: flex;

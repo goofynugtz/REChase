@@ -13,7 +13,7 @@ export default function Leaderboard() {
         setStandings(res.data.standings);
       })
       .catch(err => {
-        console.err(err);
+        console.error(err);
       })
   
     //eslint-disable-next-line
