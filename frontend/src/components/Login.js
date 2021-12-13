@@ -8,6 +8,8 @@ export default function Login({
   setAuth,
   setName,
   setEmail,
+  setIsTeamed,
+  setIsLeader,
   setPicture
 }) {
 
@@ -43,6 +45,7 @@ export default function Login({
   }
 
   let clientId = "609471501475-p162n1d9un54os08n6mqtv3n7c8amu0a.apps.googleusercontent.com"
+  // cliendId = process.env.CLIENT_ID
 
   return (
     <div className='big-button'>

@@ -15,17 +15,29 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from api.views import GoogleLogin
-from api.views import leaderboard, updateLeaderboardOnLogin, getQuestion, verifyAnswer
+from api.views import GoogleLogin, TeamLeaderboardView, rules
+from api.views import getQuestion, verifyAnswer, createTeam, joinTeam, updateDashboardOnLogin, TeamLeaderboardView, Rules, deleteTeam
+from api import views
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+
+router.register('player', views.PlayerView, basename='Players')
+# router.register('leaderboard', views.TeamLeaderboardView, basename='Teams')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('', include(router.urls)),
     # path('accounts/', include('rest_auth.urls')),
     # path('accounts/registration/', include('rest_auth.registration.urls')),
     path('accounts/google/', GoogleLogin.as_view(), name='google_login'),
-    path('leaderboard/', leaderboard.as_view(), name='leaderboard'),
-    path('dashboard/', updateLeaderboardOnLogin, name='addEntry'),
+    path('leaderboard/', TeamLeaderboardView, name='leaderboard'),
+    path('dashboard/', updateDashboardOnLogin, name='addEntry'),
     path('hunt/', getQuestion, name="level"),
-    path('hunt/submit/', verifyAnswer, name="submit")
+    path('hunt/submit/', verifyAnswer, name="submit"),
+    path('create-team/', createTeam, name="create-team"),
+    path('join-team/', joinTeam, name="join-team"),
+    path('rules/', rules, name='rules'),
+    path('deleteTeam/', deleteTeam, name='delete'),
 ]

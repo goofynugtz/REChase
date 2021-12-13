@@ -5,6 +5,8 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 
 export default function Navbar({ darkMode, auth, setAuth, name, picture }) {
 
+  console.log(picture)
+
   return (
     <>
       {auth ?
@@ -29,7 +31,7 @@ export default function Navbar({ darkMode, auth, setAuth, name, picture }) {
               localStorage.clear()
               alert("You've been signed out");
             }}>
-              <img src={picture} className="profile-image" alt="profile" />
+              <img src={picture} className="profile-image" alt="" />
               <div>{name}</div>
             </div>
             <div className='navlink'>

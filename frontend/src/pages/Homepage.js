@@ -6,6 +6,8 @@ export default function Homepage({
   setAuth,
   setName,
   setEmail,
+  setIsTeamed,
+  setIsLeader,
   setPicture
 }) {
 
@@ -23,6 +25,8 @@ export default function Homepage({
           {...{ setAuth }}
           {...{ setName }}
           {...{ setEmail }}
+          {...{ setIsTeamed }}
+          {...{ setIsLeader }}
           {...{ setPicture }}
         />
       </div>

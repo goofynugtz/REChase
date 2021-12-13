@@ -14,11 +14,14 @@ import Rules from './pages/Rules';
 import Leaderboard from './pages/Leaderboard';
 import Question from './pages/Question';
 import { SignInRequired } from './pages/SignInRequired';
+import { CreateTeam, JoinTeam } from './pages/JoinOrCreate';
 
 function App() {
 
   const darkMode = useDarkMode(false);
   const [auth, setAuth] = useState(false);
+  const [isTeamed, setIsTeamed] = useState(false);
+  const [isLeader, setIsLeader] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState("");
@@ -27,9 +30,11 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("auth") !== null)
       setAuth(localStorage.getItem("auth"))
-      setName(localStorage.getItem("name"))
-      setEmail(localStorage.getItem("email"))
-      setPicture(localStorage.getItem("picture"))
+    setIsTeamed(localStorage.getItem("isTeamed"))
+    setIsLeader(localStorage.getItem("isLeader"))
+    setName(localStorage.getItem("name"))
+    setEmail(localStorage.getItem("email"))
+    setPicture(localStorage.getItem("picture"))
   }, [])
 
   return (
@@ -50,6 +55,8 @@ function App() {
               name={name}
               {...{ email }}
               {...{ picture }}
+              {...{ isTeamed, setIsTeamed }}
+              {...{ isLeader, setIsLeader }}
               {...{ level, setLevel }}
               {...{ darkMode }}
             />} />
@@ -60,6 +67,8 @@ function App() {
                 {...{ setAuth }}
                 {...{ setName }}
                 {...{ setEmail }}
+                {...{ setIsTeamed }}
+                {...{ setIsLeader }}
                 {...{ setPicture }}
               />} />
         }
@@ -67,11 +76,24 @@ function App() {
         <Route path="/leaderboard" element={<Leaderboard />} />
         {
           auth ?
-            <Route path="/hunt/" element={
-              <Question level={level}
-                {...{ setLevel }}
-                {...{ email }}
-              />} />
+            <>
+              <Route path="/hunt/" element={
+                <Question level={level}
+                  {...{ setLevel }}
+                  {...{ email }}
+                />}
+              />
+              <Route path="/createTeam" element={
+                <CreateTeam email={email}
+                {...{isTeamed, setIsTeamed}}
+                />
+              }/>
+              <Route path="/joinTeam" element={
+                <JoinTeam email={email}
+                {...{isTeamed, setIsTeamed}}
+                />
+              }/>
+            </>
             :
             <Route path="/hunt/" element={<SignInRequired />} />
         }

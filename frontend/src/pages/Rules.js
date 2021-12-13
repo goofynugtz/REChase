@@ -1,6 +1,19 @@
 import { Shield } from "../components/assets/Shield";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 export default function Rules () {
+
+  const [rules, setRules] = useState([])
+
+  useEffect(() => {
+    axios.get("http://localhost:8000/rules/")
+    .then (res => {
+      console.log(res)
+    })
+    .catch(err => console.log(err))
+  })
+
   return (
     <div className="home">
       <div className="main">

@@ -7,6 +7,8 @@
 	--font-color-primary-alt: #ffffff;
   --transparent1: rgba(0, 0, 0, 0.2);
   --transparent2: rgba(0, 0, 0, 0.1);
+  --mid-btn: rgba(0, 0, 0, 0.5);
+  --mid-btn-hover: rgba(0, 0, 0, 0.3);
   --island-front: #E1E1E1;
   --island-back: #C4C4C4;
 
@@ -21,6 +23,8 @@
 	--font-color-primary-alt: #000000;
   --transparent1: rgba(255, 255, 255, 0.2);
   --transparent2: rgba(255, 255, 255, 0.1);
+  --mid-btn: rgba(255, 255, 255, 0.2);
+  --mid-btn-hover: rgba(255, 255, 255, 0.1);
   --island-front: #E1E1E1;
   --island-back: #C4C4C4;
 }
@@ -151,7 +155,8 @@ svg {
   /* background-color: #5EFFC7; */
   border-radius: 10rem;
   padding: 1rem;
-  margin: 1rem;
+  margin: 0 1rem;
+  
 }
 
 
@@ -282,6 +287,21 @@ svg {
 
 .table-row {
   display: flex;
+  flex-direction: column;
+}
+
+.table-row-top {
+  display: flex;
+  flex-direction: row;
+}
+
+.table-row-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-row {
+  display: flex;
   flex-direction: row;
 }
 
@@ -314,7 +334,7 @@ svg {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
-  width: 60rem;
+  width: 80rem;
   margin-bottom: 4rem;
 }
 
@@ -325,6 +345,53 @@ svg {
 .big {
   font-size: 5rem;
   padding: 0 .2rem;
+}
+
+.team-code {
+  margin-right: 5rem;
+}
+
+.team-option {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-input {
+  margin: 2rem 0;
+  outline: 0;
+  border: 0;
+  width: 50rem;
+  height: 7rem;
+  border-radius: .5rem;
+  background-color: transparent;
+  border: .4rem solid var(--transparent2);
+  padding: 0 2rem;
+  font-size: 2rem;
+  font-family: SFCompactMedium;
+  color: var(--font-color-primary);
+}
+
+.medium-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  height: 5rem;
+  /* margin-left: -.5rem; */
+  margin-right: 2rem;
+  outline: 0;
+  border: 0;
+  background-color: var(--mid-btn);
+  color: white;
+  font-family: SFCompactMedium;
+  font-size: 1.8rem;
+  border-radius: .5rem;
+  transition: all .2s;
+  /* box-shadow: 0 0 2rem .5rem var(--transparent2); */
+}
+
+.medium-button:hover {
+  background-color: var(--mid-btn-hover);
 }
 
 .level {
