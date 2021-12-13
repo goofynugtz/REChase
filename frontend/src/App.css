@@ -331,10 +331,11 @@ svg {
 
 .desc {
   font-family: SFCompactMedium;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   align-items: flex-end;
-  width: 80rem;
+  width: 60rem;
   margin-bottom: 4rem;
 }
 

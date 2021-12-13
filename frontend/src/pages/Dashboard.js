@@ -8,35 +8,43 @@ export default function Dashboard({
   email,
   picture,
   isTeamed, setIsTeamed,
+  teamCode, setTeamCode,
+  teamName, setTeamName,
   isLeader, setIsLeader,
+  score, setScore,
   level, setLevel,
   darkMode
 }) {
-  
-  const [teamCode, setTeamCode] = useState('')
-  
+
+  // const [teamCode, setTeamCode] = useState('')
+
   useEffect(() => {
-    axios.post("http://localhost:8000/dashboard/", {
-      "name": name,
-      "email": email,
-      "picture": picture
-    }).then(res => {
-      // console.log(picture)
-      setLevel(res.data.profile.level)
-      setIsTeamed(res.data.profile.isTeamed)
-      setIsLeader(res.data.profile.isLeader)
-      if (res.data.profile.isLeader)
-        setTeamCode(res.data.profile.teamCode)
+    async function fetchData() {
+      axios.post("http://localhost:8000/dashboard/", {
+        "name": name,
+        "email": email,
+        "picture": picture
+      }).then(res => {
+        // console.log(picture)
+        setIsLeader(res.data.profile.isLeader)
+        setLevel(res.data.profile.level)
+        setScore(res.data.profile.score)
+        setIsTeamed(res.data.profile.isTeamed)
+        if (res.data.profile.isTeamed)
+          setTeamCode(res.data.profile.teamCode)
+          setTeamName(res.data.profile.teamName)
+  
+        if (res.status === 302)
+          console.log("Welcome Back!");
+  
+      }).catch(error => {
+        console.error(error)
+      })
+    }
 
-      if (res.status === 302)
-        console.log("Welcome Back!");
-
-    }).catch(error => {
-      console.error(error)
-    })
-
+    fetchData()
     //eslint-disable-next-line
-  }, [level, isLeader])
+  }, [level])
 
 
   return (
@@ -46,19 +54,23 @@ export default function Dashboard({
           Hi, {name},
         </div>
         <div className="desc">
-          {
-            isLeader ?
-              <div className="team-code">Your team code is <br />
-                <span className="accent big">{teamCode}</span>
-              </div>
-              :
-              <></>
-          }
+          <div className="team-code">Your team code is <br />
+            <span className="accent big">{teamCode}</span>
+          </div>
+          <div className="team-code"> Team Name <br />
+            <span className="accent big">{teamName}</span>
+          </div>
           <div className="level">
             Currently,
             <br />
             You're at level
             <span className="accent big">{level}</span>
+          </div>
+          <div className="level">
+            Your
+            <br />
+            Team Score
+            <span className="accent big">{score}</span>
           </div>
           {/* <div className="time-played">
             Time Played <span className="accent big">2</span> hrs <span className="accent big">17</span> mins

@@ -21,17 +21,24 @@ function App() {
   const darkMode = useDarkMode(false);
   const [auth, setAuth] = useState(false);
   const [isTeamed, setIsTeamed] = useState(false);
+  const [teamCode, setTeamCode] = useState("");
+  const [teamName, setTeamName] = useState("");
   const [isLeader, setIsLeader] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [picture, setPicture] = useState("");
+  const [score, setScore] = useState(1);
   const [level, setLevel] = useState(1);
 
   useEffect(() => {
     if (localStorage.getItem("auth") !== null)
       setAuth(localStorage.getItem("auth"))
     setIsTeamed(localStorage.getItem("isTeamed"))
+    setTeamCode(localStorage.getItem("teamCode"))
+    setTeamName(localStorage.getItem("teamName"))
     setIsLeader(localStorage.getItem("isLeader"))
+    setScore(localStorage.getItem("score"))
+    setLevel(localStorage.getItem("level"))
     setName(localStorage.getItem("name"))
     setEmail(localStorage.getItem("email"))
     setPicture(localStorage.getItem("picture"))
@@ -56,7 +63,10 @@ function App() {
               {...{ email }}
               {...{ picture }}
               {...{ isTeamed, setIsTeamed }}
+              {...{ teamCode, setTeamCode }}
+              {...{ teamName, setTeamName }}
               {...{ isLeader, setIsLeader }}
+              {...{ score, setScore }}
               {...{ level, setLevel }}
               {...{ darkMode }}
             />} />
