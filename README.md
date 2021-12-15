@@ -1,6 +1,6 @@
 # REChase
 
-This is a [REChase](rechase.pythonanywhere.com/) Treasure Hunt mock with React on top of Django.
+This is a [REChase](https://rechase.pythonanywhere.com/) Treasure Hunt mock with React on top of Django.
 
 For development
 - Create Virtual environment (Do make sure to add virtualenv to path (on Windows) first) 

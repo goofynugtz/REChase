@@ -53,20 +53,20 @@ export default function Dashboard({
         <div className="intro">
           Hi, {name},
         </div>
-        <div className="desc">
-          <div className="team-code">Your team code is <br />
+        <div className="details">
+          <div className="team-details">Your team code is <br />
             <span className="accent big">{teamCode}</span>
           </div>
-          <div className="team-code"> Team Name <br />
+          <div className="team-details"> Team Name <br />
             <span className="accent big">{teamName}</span>
           </div>
-          <div className="level">
+          <div className="team-details-alt">
             Currently,
             <br />
             You're at level
             <span className="accent big">{level}</span>
           </div>
-          <div className="level">
+          <div className="team-details-alt">
             Your
             <br />
             Team Score

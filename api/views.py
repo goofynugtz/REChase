@@ -208,10 +208,10 @@ def verifyAnswer(request):
 
   if answer.lower() == request.data["answer"].lower():
     team = TeamLeaderboard.objects.get(teamCode=request.data["teamCode"])
-    if team.level <= 3 and team.score < Question.objects.all().count() * 10:
-      team.score += 10
-    if team.level < 3:
-      team.level += 1
+    if team.teamLevel <= 3 and team.teamScore < Question.objects.all().count() * 10:
+      team.teamScore += 10
+    if team.teamLevel < 3:
+      team.teamLevel += 1
     team.save()
     return Response({"isCorrect": True}, status=status.HTTP_202_ACCEPTED)
 

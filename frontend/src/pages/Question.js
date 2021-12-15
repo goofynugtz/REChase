@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-export default function Question({ level, setLevel, email }) {
+export default function Question({ level, setLevel, teamCode }) {
 
   const [question, setQuestion] = useState('')
   const [answer, setAnswer] = useState('');
@@ -17,10 +17,10 @@ export default function Question({ level, setLevel, email }) {
   }, [level])
 
 
-  const verifyAnswer = async (level, email, answer) => {
+  const verifyAnswer = async (level, teamCode, answer) => {
     axios.post("http://localhost:8000/hunt/submit/", {
       "id": level,
-      "email": email,
+      "teamCode": teamCode,
       "answer": answer
     }
     ).then(res => {
@@ -36,7 +36,7 @@ export default function Question({ level, setLevel, email }) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    verifyAnswer(level, email, answer);
+    verifyAnswer(level, teamCode, answer);
   }
 
 

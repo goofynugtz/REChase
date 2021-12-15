@@ -1,12 +1,13 @@
 import './App.css';
+
 import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import useDarkMode from 'use-dark-mode';
 
 import { Island } from './components/assets/Island';
 import { Path1 } from './components/assets/ArrowPath';
-
 import Navbar from './components/Navbar';
+
 
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
@@ -90,7 +91,7 @@ function App() {
               <Route path="/hunt/" element={
                 <Question level={level}
                   {...{ setLevel }}
-                  {...{ email }}
+                  {...{ teamCode }}
                 />}
               />
               <Route path="/createTeam" element={

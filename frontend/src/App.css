@@ -147,6 +147,7 @@ svg {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 }
 
 .profile-image {
@@ -156,7 +157,10 @@ svg {
   border-radius: 10rem;
   padding: 1rem;
   margin: 0 1rem;
-  
+}
+
+.SunMoon {
+  cursor: pointer;
 }
 
 
@@ -288,6 +292,7 @@ svg {
 .table-row {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .table-row-top {
@@ -298,6 +303,16 @@ svg {
 .table-row-bottom {
   display: flex;
   flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  font-size: 1.4rem;
+  transition: all .5s cubic-bezier(0, 1, 0, 1);
+}
+
+.table-row-bottom.show {
+  height: auto;
+  max-height: 9000px;
+  transition: all .5s cubic-bezier(1, 0, 1, 0);
 }
 
 .player-row {
@@ -306,7 +321,7 @@ svg {
 }
 
 .table-data {
-  height: 4rem;
+  height: 5rem;
   background-color: var(--transparent2);
   margin: .25rem;
   padding: 0 1rem;
@@ -324,12 +339,52 @@ svg {
   width: 40rem;
 }
 
+.team-image {
+  position: relative;
+  width: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-image {
+  width: 3rem;
+  height: 3rem;
+  /* background-color: #5EFFC7; */
+  border-radius: 10rem;
+  border: .25rem solid white;
+  /* padding: 1rem; */
+  /* margin: 0 1rem; */
+}
+
+.player-top {
+  position: absolute;
+  left: 0;
+  z-index: 2;
+}
+
+.hidden-player-one {
+  position: absolute;
+  left: 1.5rem;
+  z-index: 1;
+}
+
+.hidden-player-two {
+  position: absolute;
+  left: 3rem;
+  z-index: 0;
+}
+
+.team-name {
+  margin-left: 1rem;
+}
+
 .intro {
   font-size: 2.8rem;
   margin-bottom: 4rem;
 }
 
-.desc {
+.details {
   font-family: SFCompactMedium;
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -395,7 +450,7 @@ svg {
   background-color: var(--mid-btn-hover);
 }
 
-.level {
+.team-details-alt {
   width: fit-content;
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -432,4 +487,48 @@ svg {
   font-size: 2rem;
   font-family: SFCompactMedium;
   color: var(--font-color-primary);
+}
+
+
+/* Accordion */
+.accordion-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion-title {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: none;
+  outline: none;
+  transition: background-color 0.6s ease;
+}
+
+.accordion-title:hover,
+.active {
+  background-color: #ccc;
+}
+
+.accordion-icon {
+  margin-left: auto;
+  transition: transform 0.6s ease;
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.accordion-content {
+  background-color: white;
+  overflow: hidden;
+  transition: max-height 0.6s ease;
+}
+
+.accordion-text {
+  font-weight: 400;
+  font-size: 14px;
+  padding: 18px;
 }
