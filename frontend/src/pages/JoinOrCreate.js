@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import { Navigate } from 'react-router-dom'
 export function CreateTeam({ email, isTeamed, setIsTeamed }) {

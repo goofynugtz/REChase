@@ -1,7 +1,7 @@
 import { Map } from "../components/assets/Map";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function Dashboard({
   name,
@@ -15,8 +15,6 @@ export default function Dashboard({
   level, setLevel,
   darkMode
 }) {
-
-  // const [teamCode, setTeamCode] = useState('')
 
   useEffect(() => {
     async function fetchData() {

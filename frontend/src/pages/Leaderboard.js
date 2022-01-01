@@ -36,7 +36,7 @@ export default function Leaderboard() {
         <div className="table">
           {standings.map((standing, key) => {
             return (
-              <div className="table-row">
+              <div className="table-row" key={key}>
                 <div className="table-row-top" onClick={() => toggle(key)}>
                   <div className="table-data rank">{standing.teamRank}</div>
                   <div className="table-data name">

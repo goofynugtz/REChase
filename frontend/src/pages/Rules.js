@@ -1,10 +1,9 @@
 import { Shield } from "../components/assets/Shield";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 
 export default function Rules () {
 
-  const [rules, setRules] = useState([])
 
   useEffect(() => {
     axios.get("http://localhost:8000/rules/")

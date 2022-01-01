@@ -8,7 +8,6 @@ import { Island } from './components/assets/Island';
 import { Path1 } from './components/assets/ArrowPath';
 import Navbar from './components/Navbar';
 
-
 import Homepage from './pages/Homepage';
 import Dashboard from './pages/Dashboard';
 import Rules from './pages/Rules';
@@ -47,7 +46,6 @@ function App() {
 
   return (
     <div className="App">
-
       <div className="path1 themed-stroke">
         <Path1 />
       </div>
@@ -78,8 +76,6 @@ function App() {
                 {...{ setAuth }}
                 {...{ setName }}
                 {...{ setEmail }}
-                {...{ setIsTeamed }}
-                {...{ setIsLeader }}
                 {...{ setPicture }}
               />} />
         }

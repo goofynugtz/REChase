@@ -8,8 +8,6 @@ export default function Login({
   setAuth,
   setName,
   setEmail,
-  setIsTeamed,
-  setIsLeader,
   setPicture
 }) {
 
