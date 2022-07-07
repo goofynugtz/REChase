@@ -42,7 +42,7 @@ export default function Login({
     alert("You've been signed out");
   }
 
-  let clientId = "609471501475-p162n1d9un54os08n6mqtv3n7c8amu0a.apps.googleusercontent.com"
+  let clientId = "80547336586-qub34qnr7ma0m72gus4pdcfatmg6pvl1.apps.googleusercontent.com"
   // cliendId = process.env.CLIENT_ID
 
   return (

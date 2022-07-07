@@ -18,7 +18,7 @@ export default function Dashboard({
 
   useEffect(() => {
     async function fetchData() {
-      axios.post("http://localhost:8000/dashboard/", {
+      axios.post("http://rechase.herokuapp.com/dashboard/", {
         "name": name,
         "email": email,
         "picture": picture
